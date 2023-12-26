@@ -28,11 +28,11 @@ export default function NavBar() {
             >
                 <div className="container">
                     <div className="relative -mx-4 flex items-center justify-between">
-                        <div className="w-60 max-w-full px-4 xl:mr-12">
+                        <div className="w-60 max-w-full px-3 xl:mr-12">
                             <Link
                                 href={'/'}
                                 className={`text-[30px] font-extrabold cursor-pointer block w-full
-                            ${sticky ? "py-5 lg:py-2" : "py-8"}
+                            ${sticky ? "py-5 lg:py-2" : "py-5"}
                             `}
                             >
                                 Blog

@@ -8,11 +8,7 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <div>
-      {/* <Button title='btn' onClick={() => { }}/>
-      
-      <div>Homepage</div>
-      
-      <Processing/> */}
+      Homepage
     </div>
   )
 }
