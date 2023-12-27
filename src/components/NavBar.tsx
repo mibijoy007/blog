@@ -7,12 +7,18 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import Button from "./Button"
 import ThemeToggler from "./ThemeToggler"
+import { signIn, signOut, useSession } from "next-auth/react"
+import Image from "next/image"
 
 
 export default function NavBar() {
     const [sticky, setSticky] = useState<boolean>(false)
     const [navbarToggle, setNavbarToggle] = useState<boolean>(false)
+    const {data: session} = useSession();
 
+    // console.log("session",session?.user?.image)
+    // console.log("session",session)
+    
     function handleStickyNav() {
         if (window.scrollY > 80) setSticky(true)
         else setSticky(false)
@@ -30,7 +36,7 @@ export default function NavBar() {
             <header
                 className={`top-0 left-0 z-40 flex w-full items-center bg-transparent
             ${sticky
-                        ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop:blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
+                        ? "!fixed !z-[9999] !bg-white !bg-opacity-100 shadow-sticky backdrop:blur-sm !transition dark:!bg-black dark:!bg-opacity-100"
                         : "absolute"
                     }
             `}
@@ -97,11 +103,28 @@ export default function NavBar() {
                                 </nav>
                             </div>
                             <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">
-                                <Button title="Sign up" onClick={() => { }} />
-                                <Button title="Sign in" onClick={() => { }} />
+                            
+                            {session !== null ?  (
+                                <Button title="🖋️ Write"  onClick={() =>{ } }  />
+                                         ): null}
+                                
+                                <Button title={ session!== null ?  "Sign out" : "Sign in" }  onClick={ session!== null ? () => signOut() : () => signIn() }  />
                                 <div className="flex gap-3 items-center">
                                     <ThemeToggler/>
 
+                                    <div>
+                                        {session !== null ?  (
+                                        <Image 
+                                        src={session?.user?.image!} 
+                                        alt="Pofile Image" 
+                                        width={30} 
+                                        height={30}
+                                        className="rounded-full"
+
+                                        /> ): null}
+
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -128,3 +151,4 @@ export default function NavBar() {
 //                                         </div>
 //                                     </div>
 //                                 </div>
+
