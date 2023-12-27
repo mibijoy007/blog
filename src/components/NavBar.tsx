@@ -6,6 +6,7 @@ import { Fascinate } from "next/font/google"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Button from "./Button"
+import ThemeToggler from "./ThemeToggler"
 
 
 export default function NavBar() {
@@ -81,9 +82,9 @@ export default function NavBar() {
                                         }
                 `}
                                 >
-                                    <ul className="block lg:flex lg:space-x-12">
+                                    <ul className="block lg:flex lg:space-x-12 ml-6">
                                         {NavItems.map((item: NavItemsInterface) => (
-                                            <li key={item.id} className="group relative">
+                                            <li key={item.id} className="group relative pl-[10px]">
                                                 <Link
                                                     href={item.path}
                                                     className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
@@ -98,7 +99,10 @@ export default function NavBar() {
                             <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">
                                 <Button title="Sign up" onClick={() => { }} />
                                 <Button title="Sign in" onClick={() => { }} />
-                                
+                                <div className="flex gap-3 items-center">
+                                    <ThemeToggler/>
+
+                                </div>
                             </div>
                         </div>
                     </div>

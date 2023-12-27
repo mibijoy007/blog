@@ -1,20 +1,16 @@
 import { NavItemsInterface } from "./Types";
 
 export const NavItems : NavItemsInterface[] = [
+    
     {
-        id: "home",
-        label: "Home",
-        path: "/",
-      },
+      id: "category",
+      label: "Category",
+      path: "/category/application",
+    },
       {
         id: "search",
         label: "Search",
         path: "/search",
-      },
-      {
-        id: "category",
-        label: "Category",
-        path: "/category/application",
       },
       {
         id: "blogs",
@@ -23,7 +19,7 @@ export const NavItems : NavItemsInterface[] = [
       },
       {
         id: "contact",
-        label: "Contact",
+        label: "Contact Us",
         path: "/contact",
       },
 ] 
