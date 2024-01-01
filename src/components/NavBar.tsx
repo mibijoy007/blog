@@ -10,11 +10,14 @@ import ThemeToggler from "./ThemeToggler"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Image from "next/image"
 
+import { useRouter } from "next/navigation"
+
 
 export default function NavBar() {
     const [sticky, setSticky] = useState<boolean>(false)
     const [navbarToggle, setNavbarToggle] = useState<boolean>(false)
     const {data: session} = useSession();
+    const router = useRouter() //next page naviagation
 
     // console.log("session",session?.user?.image)
     // console.log("session",session)
@@ -105,10 +108,13 @@ export default function NavBar() {
                             <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">
                             
                             {session !== null ?  (
-                                <Button title="🖋️ Write"  onClick={() =>{ } }  />
+                                <Button title="📝 Write"  onClick={() =>router.push('/write') }  />
                                          ): null}
                                 
-                                <Button title={ session!== null ?  "Sign out" : "Sign in" }  onClick={ session!== null ? () => signOut() : () => signIn() }  />
+                                <Button 
+                                title={ session!== null ?  "Sign out" : "Sign in" }  
+                                onClick={ session!== null ? () => signOut() : () => signIn() }  
+                                />
                                 <div className="flex gap-3 items-center">
                                     <ThemeToggler/>
 
