@@ -1,5 +1,6 @@
 'use client'
 
+import Button from "@/components/Button"
 import { FormItems } from "@/utils/FormItems"
 
 export default function(){
@@ -68,20 +69,14 @@ export default function(){
                                                                
                                                                 </option>
                                                             ))}   
-
-                                                          </select> : null
-                                                         
-                                                    }
-                                                    
-
-
+                                                          </select> : null }
                                                 </div>
-                                            ))
-                                        }
-                                        
-                                    </div>
+                                            ))}
+                                            <div className="w-full px-3">
+                                                <Button title="Create Blog" onClick={() => {}} />
+                                            </div>
+                                        </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

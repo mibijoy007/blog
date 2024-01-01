@@ -3,14 +3,11 @@ import NextAuth from "next-auth/next";
 import GitHubProvider from "next-auth/providers/github";
 
 
-
-console.log(process.env.NEXTAUTH_URL)
-
 export const AuthProviderOptions : AuthOptions = {
     providers: [
         GitHubProvider({
-          clientId : 'Iv1.7b0e3b30272fbc63',
-          clientSecret: '8e31d410eb8eed3825f07ab8a40d68effa5b91b6'
+          clientId : process.env.GitHub_ClientID as string,
+          clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENTSECRET as string
           
         })
       ],

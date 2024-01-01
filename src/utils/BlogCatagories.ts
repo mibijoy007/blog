@@ -19,6 +19,6 @@ export const BlogCatagories: BlogCatagoriesType[]=[
     },
     {
         value: "travel",
-        label: "Trevel"
+        label: "Travel"
     },
 ]
