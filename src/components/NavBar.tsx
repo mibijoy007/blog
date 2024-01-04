@@ -1,7 +1,7 @@
 'use client'
 
 import { NavItems } from "@/utils/NavItems"
-import { NavItemsInterface } from "@/utils/Types"
+import { NavItemsType } from "@/utils/Types"
 import { Fascinate } from "next/font/google"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -92,7 +92,7 @@ export default function NavBar() {
                 `}
                                 >
                                     <ul className="block lg:flex lg:space-x-12 ml-6">
-                                        {NavItems.map((item: NavItemsInterface) => (
+                                        {NavItems.map((item: NavItemsType) => (
                                             <li key={item.id} className="group relative pl-[10px]">
                                                 <Link
                                                     href={item.path}

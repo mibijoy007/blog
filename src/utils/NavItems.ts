@@ -1,6 +1,6 @@
-import { NavItemsInterface } from "./Types";
+import { NavItemsType } from "./Types";
 
-export const NavItems : NavItemsInterface[] = [
+export const NavItems : NavItemsType[] = [
     
     {
       id: "category",

@@ -1,3 +1,4 @@
+// we named the file types although used 'interfaces' as it's more versatile
 
 export interface BlogCatagoriesType {
     value: string;
@@ -13,8 +14,15 @@ export interface FormItemsType{
     blogCatagoriesOptions: BlogCatagoriesType[];
 }
 
-export interface NavItemsInterface  {
+export interface NavItemsType  {
     id: string;
     label: string;
     path: string;
+}
+
+export interface CreateblogFormDataType {
+    title: string;
+    catagory : string;
+    description: string;
+    imageURL: string;
 }

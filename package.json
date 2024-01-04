@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^5.12.7",
     "firebase": "^10.7.1",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
