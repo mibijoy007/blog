@@ -102,7 +102,7 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
 
     setImageLoading(true);
     const saveImageToFirebase: any = await handleSaveImageToFirebase(event.target.files[0])
-    console.log("saveImageToFirebase",saveImageToFirebase)
+    // console.log("saveImageToFirebase",saveImageToFirebase)
     if (saveImageToFirebase !== ''){
         setImageLoading(false)
         // console.log("saveImageToFirebase",saveImageToFirebase)
@@ -142,7 +142,11 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
                                             onChange={handleCreateBlogImage}
                                             className="pb-5"
                                             />
-                                            <Progress percent={uploadProgress} />
+                                            <div className="text-white">
+                                            <Progress percent={Math.ceil(uploadProgress)} />
+
+                                            </div>
+                                           
 
                                         </div>
                                         <div>
@@ -161,22 +165,57 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
                                                         items.formElement === "input" ?
                                                          <input 
                                                          type={items.type} 
+                                                         required
                                                          placeholder={items.placeholder}
                                                          name={items.id}
+                                                         onChange={
+                                                                    (event: React.ChangeEvent<HTMLInputElement>) =>{
+                                                                        setBlogFormData({
+                                                                            ...blogFormData,
+                                                                            // title: event.target.value
+                                                                            [items.id]: event.target.value //two lines are the same
+                                                                        })
+                                                                    }   
+                                                         }
+                                                         value={blogFormData[items.id as keyof CreateblogFormDataType]} //Recommended
                                                          className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                                                          /> : 
                                                          items.formElement === "textarea"?
                                                          <textarea
+                                                         required
                                                          placeholder={items.placeholder}
                                                          name={items.id}
+                                                         onChange={
+                                                            (event: React.ChangeEvent<HTMLTextAreaElement>) =>{
+                                                                setBlogFormData({
+                                                                    ...blogFormData,
+                                                                    // description: event.target.value
+                                                                  [items.id]: event.target.value //two lines are the same but this one is better
+                                                                  //the [ ] brackets is because of Computed Property Names or items doesn't exit on type
+                                                              })
+                                                            }   
+                                                          }
+                                                          value={blogFormData[items.id as keyof CreateblogFormDataType]} //Recommended
                                                          rows={5}
                                                          className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                                                          />:
                                                          items.formElement === "select"?
                                                           <select
+                                                          required
                                                           key={items.id}
                                                           id={items.id}
                                                         //   name={items.id}
+                                                        onChange={
+                                                            (event: React.ChangeEvent<HTMLSelectElement>) =>{
+                                                                setBlogFormData({
+                                                                    ...blogFormData,
+                                                                    // catagory: event.target.value
+                                                                    [items.id]: event.target.value //two lines are the same but this one is better
+                                                                    //the [ ] brackets is because of Computed Property Names or items doesn't exit on type
+                                                                })
+                                                            }   
+                                                        }
+                                                        value={blogFormData[items.id as keyof CreateblogFormDataType]}
                                                           className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                                                           > 
                                                           {/* <option value="">Select</option> */}
