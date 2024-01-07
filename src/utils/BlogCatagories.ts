@@ -10,8 +10,8 @@ export const BlogCatagories: BlogCatagoriesType[]=[
         label: "Technology"
     },
     {
-        value: "software",
-        label: "Software"
+        value: "education",
+        label: "Education"
     },
     {
         value: "science",

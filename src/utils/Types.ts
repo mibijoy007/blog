@@ -24,5 +24,5 @@ export interface CreateblogFormDataType {
     title: string;
     catagory : string;
     description: string;
-    imageURL: string;
+    image: string;
 }

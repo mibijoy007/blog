@@ -11,12 +11,13 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 import React, { useState } from "react"
+import { useSession } from "next-auth/react";
 
 const initialBlogFormData = {
     title: '',
     catagory : '',
     description: '',
-    imageURL: ''
+    image: ''
 }
 
 export function CreateUniqueFileName(fileName: string){
@@ -43,8 +44,11 @@ export default function Write(){
     
     const [blogFormData, setBlogFormData] = useState<CreateblogFormDataType>(initialBlogFormData)
     const [imageLoading, setImageLoading] = useState<boolean>(false);
-    const [uploadProgress, setUploadProgress] = useState<number>(0)
+    const [uploadProgress, setUploadProgress] = useState<number>(0);
+    const {data: session} = useSession();
 
+    // console.log(session,'session');
+    
     async function handleSaveImageToFirebase(file: any){
         const uniqueImageFileName = CreateUniqueFileName(file?.name)
 
@@ -108,7 +112,7 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
         // console.log("saveImageToFirebase",saveImageToFirebase)
         setBlogFormData({
             ...blogFormData,
-            imageURL: saveImageToFirebase
+            image: saveImageToFirebase
         })
 
     }
@@ -116,6 +120,44 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
 
 // console.log('formdata=',blogFormData);
 
+async function handleCreateBlogPost(){
+    console.log(blogFormData);
+
+    // const res = await fetch("/api/post/add-post", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       ...blogFormData,
+    //       userid: session?.user?.name,
+    //       userimage: session?.user?.image,
+    //       comments: [],
+    //     }),
+    //   });
+  
+    //   const data = await res.json();
+  
+    //   console.log(data, "data123");
+
+    const  res = await fetch('/api/post/add-post',{
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({
+            ...blogFormData,
+            userid: session?.user?.name,
+            userimage: session?.user?.image,
+            comments: []
+        }),
+    })
+    
+    const data = await res.json();
+    console.log(data, "data");
+    alert(data.message);
+    
+}
 
  return(
         <section className="overflow-hidden py-16 md:py-20 lg:py-20">
@@ -218,8 +260,7 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
                                                         value={blogFormData[items.id as keyof CreateblogFormDataType]}
                                                           className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                                                           > 
-                                                          {/* <option value="">Select</option> */}
-                                                          
+                                                            <option value="">Select</option>
                                                             {items.blogCatagoriesOptions.map(catagories => (
                                                                 <option 
                                                                
@@ -233,7 +274,7 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
                                                 </div>
                                             ))}
                                             <div className="w-full px-3">
-                                                <Button title="Create Blog" onClick={() => {}} />
+                                                <Button title="Create Blog" onClick={handleCreateBlogPost} />
                                             </div>
                                         </div>
                                 </div>
