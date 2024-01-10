@@ -21,16 +21,27 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
         
     return (
         <div>
-            <div className="relative overflow-hidden rounded-md bg-opacity-50 shadow-one dark:bg-dark">
+            <div className="relative overflow-hidden rounded-md bg-[#f9faff] shadow-one dark:bg-dark">
 
                 <Link 
                     className="relative block h-60 w-full" 
                     href={'/'}>
-                    <span className="absolute top-6 right-6 z-20 inline-flex items-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
+                    <span className="absolute top-3 right-3 z-20 inline-flex items-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
                         {catagory}
                     </span>
                     {/* <Image src={image} alt="Blog Image" fill/> */}
-                    { image ? <Image src={image} alt="Blog Image" fill /> : <div className="p-5 text-body-color">*No Image</div> }
+                    { image ? <Image 
+                                    src={image} 
+                                    alt="Blog Image" 
+                                    fill 
+                                    priority
+                                    // width={500}
+                                    // height={30}
+                                    // objectFit="cover"
+                                    // layout="fixed"
+                                    sizes="(max-width: 768px) 33vw, (max-width: 1200px) 33vw, 33vw"
+                                /> 
+                     : <div className="p-5 text-body-color">*No Image</div> }
                 </Link>
                 <div>
                 <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
