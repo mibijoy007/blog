@@ -26,3 +26,15 @@ export interface CreateblogFormDataType {
     description: string;
     image: string;
 }
+
+export interface BlogListType {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    catagory : string;
+    userid: string;
+    userimage: string;
+    comments: string[];
+
+}

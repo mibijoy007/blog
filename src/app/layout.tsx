@@ -6,7 +6,7 @@ import NextAuthProvider from './providers/NextAuthProvider'
 import GlobalState, { GlobalContext } from './context'
 import NavBar from '@/components/NavBar'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',

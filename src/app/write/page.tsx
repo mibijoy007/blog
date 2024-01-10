@@ -12,6 +12,8 @@ import 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 import React, { useState } from "react"
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 
 const initialBlogFormData = {
     title: '',
@@ -46,9 +48,12 @@ export default function Write(){
     const [imageLoading, setImageLoading] = useState<boolean>(false);
     const [uploadProgress, setUploadProgress] = useState<number>(0);
     const {data: session} = useSession();
+    const router = useRouter()
 
     // console.log(session,'session');
     
+
+
     async function handleSaveImageToFirebase(file: any){
         const uniqueImageFileName = CreateUniqueFileName(file?.name)
 
@@ -121,7 +126,7 @@ async function handleCreateBlogImage(event: React.ChangeEvent<HTMLInputElement>)
 // console.log('formdata=',blogFormData);
 
 async function handleCreateBlogPost(){
-    console.log(blogFormData);
+    // console.log(blogFormData);
 
     // const res = await fetch("/api/post/add-post", {
     //     method: "POST",
@@ -157,7 +162,13 @@ async function handleCreateBlogPost(){
     console.log(data, "data");
     alert(data.message);
     
+    if (data && data.success){
+        router.push('/blogs')
+    }
+    
 }
+
+
 
  return(
         <section className="overflow-hidden py-16 md:py-20 lg:py-20">

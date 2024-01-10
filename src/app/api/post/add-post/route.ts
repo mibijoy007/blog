@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
             data: extractedPostData,
         })
 
-        console.log(extractedPostData, 'extractedPostData');
+        // console.log(extractedPostData, 'extractedPostData');
         
         if (newCreatedPost){
             return NextResponse.json({
