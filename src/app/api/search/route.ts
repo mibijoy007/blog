@@ -7,8 +7,8 @@ export async function GET(request: NextRequest) {
        const url = new URL(request.url)
        const extractedQuery = url.searchParams.get('query')
     //    console.log('REQUEST =>', request);
-       console.log('URL =>', url);
-       console.log('Extracted Query =>', extractedQuery);
+    //    console.log('URL =>', url);
+    //    console.log('Extracted Query =>', extractedQuery);
        
 
        const searchedPostList = await prisma.post.findMany({
