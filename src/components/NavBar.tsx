@@ -35,7 +35,7 @@ export default function NavBar() {
     })
 
     return (
-        <div>
+        <div className="mb-12 md: lg:mb-2">
             <header
                 className={`top-0 left-0 z-40 flex w-full items-center bg-transparent
             ${sticky
@@ -108,7 +108,7 @@ export default function NavBar() {
                             <div className="flex gap-4 items-center justify-end pr-16 lg:pr-0">
                             
                             {session !== null ?  (
-                                <Button title="📝 Write"  onClick={() =>router.push('/write') }  />
+                                <Button title="📝Write"  onClick={() =>router.push('/write') }  />
                                          ): null}
                                 
                                 <Button 
