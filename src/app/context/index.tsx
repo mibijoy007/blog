@@ -25,7 +25,7 @@ export default function GlobalState({children}:{children: ReactNode}){
     {return <Processing/>}
 
     return (
-        <GlobalContext.Provider value={{loading, setLoading}}>
+        <GlobalContext.Provider value={{loading, setLoading  }}>
             {children}
         </GlobalContext.Provider>
     )

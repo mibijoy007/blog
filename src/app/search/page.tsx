@@ -4,41 +4,31 @@ import Bloglist from "@/components/blogs/BlogList";
 import SingleBlogCard from "@/components/blogs/SingleBlogCard";
 import { BlogListType } from "@/utils/Types";
 import { fetchConfig } from "firebase/remote-config";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 
-// async function SearchApi(){
-//     const response = await fetch(`/api/search?query=cu`,{
-//         method: 'GET',
-//         cache:"no-store"
-//     }) 
-//     console.log("aaaaaaaaaaaaa",response)
-// }
-// SearchApi()
 
 
 export default function Search() {
     const [searchQuery, setSearchQuery] = useState('')
     const [searchResults, setSearchResults] = useState([])
+    const router = useRouter();
 
     function handleSearchBarInput(event: ChangeEvent<HTMLInputElement>) {
 
         setSearchQuery(event.target.value);
     }
 
-    async function handleSearchButton() {
-        // console.log("searchQuery ==> ", searchQuery)
-
+    async function helperSearchForDeleting(queryHandelingDelete: string){
         if (searchQuery !== '') {
-            const res = await fetch(`/api/search?query=${searchQuery}`, {
+            const res = await fetch(`/api/search?query=${queryHandelingDelete}`, {
                 method: 'GET',
                 cache: "no-store"
-            })
+            }) 
 
             const searchedData = await res.json();
             // console.log("searchedData===>", searchedData);
-
-
-            if (searchedData.data.length > 0) {
+            if (searchedData.data.length) {
                 // setSearchQuery('');   //nope don't want the search bar to be emtpy after one attempt. Try something else. Later 
                 setSearchResults(searchedData.data)
             }
@@ -46,13 +36,44 @@ export default function Search() {
 
         }
         else {
-            alert("Search Bar is empty!!!")
+            alert("Search Bar is empty!")
         }
+
+    }
+
+
+    async function handleSearchButton() {
+        // console.log("searchQuery ==> ", searchQuery)
+
+           helperSearchForDeleting(searchQuery);
+
+          
 
 
     }
 
     // console.log("searchResults-----", searchResults);
+
+
+///********************************************************************************** */
+//This function is not in use we'll solve it later
+    async function handleDeleteSearchPage(idToDete: number) {
+        // console.log(id , "jjjjj")
+    
+        const res = await fetch(`/api/post/delete-post?id=${idToDete}`,{
+            method: 'DELETE',
+            cache: 'no-store'
+        })
+
+        const resData = await res.json();
+        console.log("resData=====>",resData) 
+
+        if(resData && resData.success) {
+            helperSearchForDeleting(searchQuery);
+            // router.refresh() 
+        }
+        // else setSearchResults(searchResults)
+    }
 
 
     return (

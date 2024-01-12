@@ -4,21 +4,40 @@ import { BlogListType } from "@/utils/Types"
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 import { FaTrash } from "react-icons/fa";
 
+
+
 export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: BlogListType }) {
+
     const {data: session} = useSession();
     const { id,
-        title,
-        description,
-        image,
-        catagory,
-        userid,
-        userimage,
-        comments } = singleBlogItem;
+            title,
+            description,
+            image,
+            catagory,
+            userid,
+            userimage,
+            comments } = singleBlogItem;
+    
+    const router = useRouter();
 
         // console.log(session?.user?.name,"&&&",userid);
         
+        async function handleDelete(idToDete: number) {
+            // console.log(id , "jjjjj")
+        
+            const res = await fetch(`/api/post/delete-post?id=${id}`,{
+                method: 'DELETE',
+                cache: 'no-store'
+            })
+
+            const resData = await res.json();
+            console.log("resData=====>",resData) 
+
+            if(resData && resData.success) router.refresh(); 
+        }
     return (
         <div>
             <div className="relative overflow-hidden rounded-md bg-[#f9faff] shadow-one dark:bg-dark">
@@ -41,7 +60,7 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                                     // layout="fixed"
                                     sizes="(max-width: 768px) 33vw, (max-width: 1200px) 33vw, 33vw"
                                 /> 
-                     : <div className="p-5 text-body-color">*No Image</div> }
+                     : <div className="p-5 text-body-color font-serif">*No Image</div> }
                 </Link>
                 <div>
                 <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
@@ -74,7 +93,14 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                                 
                                 {/* we have to check if the user is the owner or not then he can "delete" this by using session*/}
                                 {
-                                    session?.user?.name === userid ? <FaTrash className='cursor-pointer' size={20} /> : null
+                                    session?.user?.name === userid ? 
+                                        <FaTrash 
+                                        className='cursor-pointer' 
+                                        size={20} 
+                                        onClick={() => {handleDelete(id)}}
+                                        /> 
+                                    
+                                        : null
 
                                 }
                         </div>
