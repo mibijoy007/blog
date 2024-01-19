@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
                             }
                         },
                         {
-                            catagory:{
+                            category:{
                                 contains: extractedQuery || ""
                             }
                         },

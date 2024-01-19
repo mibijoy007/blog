@@ -14,9 +14,9 @@ export const FormItems: FormItemsType[] =[
         blogCatagoriesOptions: []
     },
     {
-        id : "catagory",
-        label: "Catagory",
-        placeholder: "Choose catagory",
+        id : "category",
+        label: "Category",
+        placeholder: "Choose category",
         type: "",
         formElement: "select",
         blogCatagoriesOptions: BlogCatagories

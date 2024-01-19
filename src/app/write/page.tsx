@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 
 const initialBlogFormData = {
     title: '',
-    catagory : '',
+    category : '',
     description: '',
     image: ''
 }
@@ -262,7 +262,7 @@ async function handleCreateBlogPost(){
                                                             (event: React.ChangeEvent<HTMLSelectElement>) =>{
                                                                 setBlogFormData({
                                                                     ...blogFormData,
-                                                                    // catagory: event.target.value
+                                                                    // category: event.target.value
                                                                     [items.id]: event.target.value //two lines are the same but this one is better
                                                                     //the [ ] brackets is because of Computed Property Names or items doesn't exit on type
                                                                 })

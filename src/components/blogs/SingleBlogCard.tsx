@@ -16,7 +16,7 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
             title,
             description,
             image,
-            catagory,
+            category,
             userid,
             userimage,
             comments } = singleBlogItem;
@@ -46,7 +46,7 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                     className="relative block h-60 w-full" 
                     href={'/'}>
                     <span className="absolute top-3 right-3 z-20 inline-flex items-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
-                        {catagory}
+                        {category}
                     </span>
                     {/* <Image src={image} alt="Blog Image" fill/> */}
                     { image ? <Image 

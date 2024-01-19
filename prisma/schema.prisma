@@ -16,7 +16,7 @@ model Post {
   title       String
   description String
   image       String
-  catagory    String
+  category    String
   userid      String
   userimage   String
   comments    String[]

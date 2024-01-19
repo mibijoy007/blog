@@ -22,7 +22,7 @@ export interface NavItemsType  {
 
 export interface CreateblogFormDataType {
     title: string;
-    catagory : string;
+    category : string;
     description: string;
     image: string;
 }
@@ -32,7 +32,7 @@ export interface BlogListType {
     title: string;
     description: string;
     image: string;
-    catagory : string;
+    category : string;
     userid: string;
     userimage: string;
     comments: string[];
