@@ -1,10 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project.
+
+A Full-Stack Website Using Next API Routes, Typescript, Tailwind, PostgreSQL, Prisma ORM, Firebase
+This is a full stack app which you can use to create Blogs based on different category.
 
 ## Getting Started
+Make sure to get all the services above for yourself to run this locally
 
-First, run the development server:
+
+## Environment Variables
+Make a .env file
+```bash
+touch .env
+```
+Put your Environment Variables there:
 
 ```bash
+
+NEXTAUTH_URL=
+DATABASE_URL=
+
+```
+
+
+First, clone it:
+
+```bash
+git clone https://github.com/mibijoy007/blog.git
+```
+
+Now:
+```bash
+cd blog
+
+#then
+
+npm install
+```
+Run the development server:
+```bash
+
 npm run dev
 # or
 yarn dev
