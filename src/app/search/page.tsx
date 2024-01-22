@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import Bloglist from "@/components/blogs/BlogList";
 import SingleBlogCard from "@/components/blogs/SingleBlogCard";
-import { BlogListType } from "@/utils/Types";
+import { BlogType } from "@/utils/Types";
 import { fetchConfig } from "firebase/remote-config";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
@@ -66,7 +66,7 @@ export default function Search() {
         })
 
         const resData = await res.json();
-        console.log("resData=====>",resData) 
+        // console.log("resData=====>",resData) 
 
         if(resData && resData.success) {
             helperSearchForDeleting(searchQuery);

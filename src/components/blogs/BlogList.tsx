@@ -1,12 +1,12 @@
 'use client'
 
-import { BlogListType } from "@/utils/Types"
+import { BlogType } from "@/utils/Types"
 import SingleBlogCard from "./SingleBlogCard"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react";
 
 
-export default function Bloglist({list}: {list: BlogListType[]}){
+export default function Bloglist({list}: {list: BlogType[]}){
 
     const router = useRouter();
 

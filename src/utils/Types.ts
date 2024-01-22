@@ -27,7 +27,7 @@ export interface CreateblogFormDataType {
     image: string;
 }
 
-export interface BlogListType {
+export interface BlogType {
     id: number;
     title: string;
     description: string;

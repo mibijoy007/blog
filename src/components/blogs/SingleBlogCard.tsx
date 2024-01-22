@@ -1,6 +1,6 @@
 'use client'
 
-import { BlogListType } from "@/utils/Types"
+import { BlogType } from "@/utils/Types"
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link"
@@ -9,7 +9,7 @@ import { FaTrash } from "react-icons/fa";
 
 
 
-export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: BlogListType }) {
+export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: BlogType }) {
 
     const {data: session} = useSession();
     const { id,
@@ -21,6 +21,8 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
             userimage,
             comments } = singleBlogItem;
     
+    const titleForURL = title.toLocaleLowerCase().replace(/\s+/g, '-');
+
     const router = useRouter();
 
         // console.log(session?.user?.name,"&&&",userid);
@@ -34,7 +36,7 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
             })
 
             const resData = await res.json();
-            console.log("resData=====>",resData) 
+            // console.log("resData=====>",resData) 
 
             if(resData && resData.success) router.refresh(); 
         }
@@ -67,7 +69,8 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                     <h2>
                         <Link
                             className="mb-4 text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
-                            href={'/'}
+                            // href={`/blogs/${titleForURL}`}
+                            href={`/blogs/${id}`}
                         >
                             {title}
                         </Link>

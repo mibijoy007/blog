@@ -3,10 +3,7 @@
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { MdDarkMode } from "react-icons/md";
-import { CiLight } from "react-icons/ci";
-
-import { FaLightbulb } from "react-icons/fa";
-import { TbBulb, TbBulbFilled } from "react-icons/tb";
+import { TbBulb } from "react-icons/tb";
 
 export default function ThemeToggler(){
     const [mounted, setMounted] = useState(false)

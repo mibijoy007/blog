@@ -1,8 +1,30 @@
+// This is for the comments
+import { prisma } from "@/database";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function PUT(request: NextRequest) {
     try {
-        
+        const extractedData = await request.json()
+        const updateBlogData = await prisma.post.update({
+            where:{
+                id: Number(extractedData.id)
+            },
+            data: {
+                comments: extractedData.comments
+            }
+        })
+
+        if(updateBlogData){
+            return NextResponse.json({
+                success: true,
+                data: updateBlogData
+            })
+        }else{
+            return NextResponse.json({
+                success: false,
+                message: "Failed to update data for comments"
+            })
+        }
     } catch (error) {
         console.log(error);
 

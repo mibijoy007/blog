@@ -21,4 +21,8 @@ export const BlogCatagories: BlogCatagoriesType[]=[
         value: "travel",
         label: "Travel"
     },
+    {
+        value: "others",
+        label: "Others"
+    },
 ]

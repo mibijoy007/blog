@@ -12,6 +12,19 @@ export async function GET(request: NextRequest) {
                 category: extractedCategory || ""
             }
         })
+
+        if(getPostForCategory){
+            return NextResponse.json({
+                success: true,
+                data: getPostForCategory
+            })
+        }else {
+            return NextResponse.json({
+                success: false,
+                message: `Failed to get data. Please Try again`
+            })
+            
+        }
         
     } catch (error) {
         console.log(error);
