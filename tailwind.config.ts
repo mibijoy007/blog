@@ -37,13 +37,16 @@ module.exports = {
       current: "currentColor",
       transparent: "transparent",
       white: "#FFFFFF",
-      black: "#090d1f",
+      // black: "#090d1f",
+      black: "#0a0a16",
       dark: "#1D2144",
+      dark2: "#101125",
       primary: "#4A6CF7",
       yellow: "#FBB040",
       "body-color": "#959CB1",
       lessWhite: "#DCDCDC",
-      lessBlack : "#585858"
+      lessBlack : "#585858",
+      blue: "#4a6cf7"
     },
     screens: {
       xs: "450px",

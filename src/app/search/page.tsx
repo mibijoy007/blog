@@ -6,6 +6,7 @@ import { BlogType } from "@/utils/Types";
 import { fetchConfig } from "firebase/remote-config";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 
 
@@ -32,11 +33,31 @@ export default function Search() {
                 // setSearchQuery('');   //nope don't want the search bar to be emtpy after one attempt. Try something else. Later 
                 setSearchResults(searchedData.data)
             }
-            else alert('Nothing found')
+            // else alert('Nothing found')
+            else toast('Nothing found',
+                {
+                  icon: '🤷‍♂️',
+                  style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  },
+                }
+              );
 
         }
         else {
-            alert("Search Bar is empty!")
+            // alert("Search Bar is empty!")
+            toast("Search Bar is empty!",
+                {
+                  icon: '❌',
+                  style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  },
+                }
+              );
         }
 
     }
@@ -77,12 +98,12 @@ export default function Search() {
 
 
     return (
-        <section className="overflow-hidden py-16 md:py-20 lg:py-28">
+        <section className="overflow-hidden py-16 ">
             <div className="container">
                 <div className="-mx-4 flex flex-wrap">
                     <div className="w-full px-4">
-                        <div className="mb-12 rounded-md bg-primary/[3%] py-11 px-8 dark:bg-dark sm:p-[50px] lg:mb-5 lg:px-8 xl:p-[55px]">
-                            <h2 className="mb-3 text-xl text-center font-bold text-black dark:text-white sm:text-3xl lg:text-4xl xl:text-5xl">
+                        <div className="mb-12 rounded-md bg-primary/[3%] py-11 px-8 dark:bg-black sm:p-[50px] lg:mb-5 lg:px-8 xl:p-[55px]">
+                            <h2 className="mb-6 text-xl text-center font-bold text-black dark:text-white sm:text-3xl lg:text-4xl xl:text-5xl">
                                 🔍 Search
                             </h2>
                             <div className="flex flex-col gap-4">

@@ -35,9 +35,9 @@ export default function NavBar() {
     })
 
     return (
-        <div className="mb-12 md: lg:mb-2">
+        <div className="mb-6 md: lg:mb-0 ">
             <header
-                className={`top-0 left-0 z-40 flex w-full items-center bg-transparent
+                className={`top-0 left-0 z-40 flex w-full items-center bg-transparent border-b-2 border-dark/10 dark:border-white/10
             ${sticky
                         ? "!fixed !z-[9999] !bg-white !bg-opacity-100 shadow-sticky backdrop:blur-sm !transition dark:!bg-black dark:!bg-opacity-100"
                         : "absolute"
@@ -49,14 +49,15 @@ export default function NavBar() {
                         <div className="w-60 max-w-full px-3 xl:mr-12">
                             <Link
                                 href={'/'}
-                                className={`text-[30px] font-extrabold cursor-pointer block w-full
-                            ${sticky ? "py-5 lg:py-2" : "py-5"}
+                                className={`text-[30px] font-extrabold cursor-pointer block w-full font-mono
+                            ${sticky ? "py-2 lg:py-0" : "py-2"}
                             `}
                             >
-                                Blog
+                                Mi&apos;s Blog
                             </Link>
                         </div>
                         <div className="flex w-full items-center justify-between px-4">
+                            
                             <div>
                                 <button
                                     onClick={handleNavbarToggle}
@@ -91,12 +92,12 @@ export default function NavBar() {
                                         }
                 `}
                                 >
-                                    <ul className="block lg:flex lg:space-x-12 ml-6">
+                                    <ul className="block lg:flex lg:space-x-12 ml-20">
                                         {NavItems.map((item: NavItemsType) => (
                                             <li key={item.id} className="group relative pl-[10px]">
                                                 <Link
                                                     href={item.path}
-                                                    className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                                                    className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-5 lg:px-0`}
                                                 >
                                                     {item.label}
                                                 </Link>
@@ -138,6 +139,7 @@ export default function NavBar() {
                 </div>
 
             </header>
+
         </div>
     )
 }

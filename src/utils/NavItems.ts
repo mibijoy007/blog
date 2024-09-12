@@ -2,24 +2,30 @@ import { NavItemsType } from "./Types";
 
 export const NavItems : NavItemsType[] = [
     
-    {
-      id: "category",
-      label: "Category",
-      path: "/category/application",
-    },
+    
       {
         id: "search",
         label: "Search",
         path: "/search",
       },
+      // {
+      //   id: "blogs",
+      //   label: "Blogs",
+      //   path: "/blogs",
+      // },
       {
-        id: "blogs",
-        label: "Blogs",
-        path: "/blogs",
+        id: "contacts",
+        label: "Contacts",
+        path: "/contacts",
       },
       {
-        id: "contact",
-        label: "Contact Us",
-        path: "/contact",
+        id: "aboutMe",
+        label: "About Me",
+        path: "/aboutMe",
       },
+      // {
+      //   id: "category",
+      //   label: "Category",
+      //   path: "/category/application",
+      // },
 ] 
