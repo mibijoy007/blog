@@ -49,7 +49,7 @@ export default function NavBar() {
                         <div className="w-60 max-w-full px-3 xl:mr-12">
                             <Link
                                 href={'/'}
-                                className={`text-[30px] font-extrabold cursor-pointer block w-full font-mono
+                                className={`text-[30px] font-extrabold  text-lg lg:text-4xl tracking-tighter cursor-pointer block w-full font-mono
                             ${sticky ? "py-2 lg:py-0" : "py-2"}
                             `}
                             >
@@ -83,8 +83,8 @@ export default function NavBar() {
                                 </button>
                                 <nav
                                     id="navbarCollapse"
-                                    className={`absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white border-body-color/50 py-4 
-                px-6 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100
+                                    className={`absolute right-0 z-30 w-[180px] rounded-md border-[.5px] bg-white border-body-color/50 py-3
+                px-2 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100
 
                 ${navbarToggle
                                             ? "visible top-full opacity-100"
@@ -92,7 +92,7 @@ export default function NavBar() {
                                         }
                 `}
                                 >
-                                    <ul className="block lg:flex lg:space-x-12 ml-20">
+                                    <ul className="block lg:flex lg:space-x-12 ml-5">
                                         {NavItems.map((item: NavItemsType) => (
                                             <li key={item.id} className="group relative pl-[10px]">
                                                 <Link
@@ -115,6 +115,7 @@ export default function NavBar() {
                                 <Button 
                                 title={ session!== null ?  "Sign out" : "Sign in" }  
                                 onClick={ session!== null ? () => signOut() : () => signIn() }  
+                                
                                 />
                                 <div className="flex gap-3 items-center">
                                     <ThemeToggler/>
