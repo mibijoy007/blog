@@ -20,4 +20,5 @@ model Post {
   userid      String
   userimage   String
   comments    String[]
+  date        String  @default("January 1, 2022")
 }

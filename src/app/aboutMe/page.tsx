@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -73,12 +75,12 @@ const AboutMe = (props: Props) => {
 
 
                 </div>
-                <div className='mt-4 lg:mt-0 font-sans lg:text-xl text-justify'>
+                <div className='mt-4 lg:mt-0 font-sans lg:text-xl text-justify text-lessWhite/70'>
                  
                     <span className=''>Hi,</span> 
 
                     <p>
-                      Welcome to my blog. I&apos;m Maksudul Islam,  a Full-Stack Web Developer with over 2 years of hands-on experience, specializing in the MERN stack with TypeScript. My journey in web development has equipped me with a deep understanding of both frontend and backend technologies, enabling me to deliver dynamic, high-performance web solutions that prioritize seamless user experiences.
+                      Welcome to my blog. I&apos;m Maksudul Islam,  a Full-Stack Web Developer with over 3 years of hands-on experience, specializing in the MERN stack with TypeScript. My journey in web development has equipped me with a deep understanding of both frontend and backend technologies, enabling me to deliver dynamic, high-performance web solutions that prioritize seamless user experiences.
                       <br /><br />
 
                       I have worked with React and Next.js, utilizing Redux Toolkit and RTK Query for effective state management, ensuring that applications are both performant and maintainable. My expertise in Tailwind CSS has further allowed me to craft visually appealing and highly customizable frontends.
@@ -100,8 +102,8 @@ const AboutMe = (props: Props) => {
                       Recently, I&apos;ve been exploring the integration of AI and Python into web development, aiming to create smarter applications. This exploration is driven by my desire to stay at the forefront of technology and continuously improve the efficiency and impact of the solutions I develop.
 
                       <br /><br />
-                      I am actively seeking a full-time position where I can contribute my skills to innovative projects, collaborate with talented teams, and continue expanding my expertise in a fast-paced development environment.
-                      <br /><br />
+                      {/* I am actively seeking a full-time position where I can contribute my skills to innovative projects, collaborate with talented teams, and continue expanding my expertise in a fast-paced development environment.
+                      <br /><br /> */}
 
                       Thanks for reading.
                     </p>

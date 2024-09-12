@@ -25,6 +25,7 @@ export interface CreateblogFormDataType {
     category : string;
     description: string;
     image: string;
+    date: string;
 }
 
 export interface BlogType {
@@ -33,6 +34,7 @@ export interface BlogType {
     description: string;
     image: string;
     category : string;
+    date:string;
     userid: string;
     userimage: string;
     comments: string[];

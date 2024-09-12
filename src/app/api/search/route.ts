@@ -25,6 +25,11 @@ export async function GET(request: NextRequest) {
                             }
                         },
                         {
+                            date:{
+                                contains: extractedQuery || ""
+                            }
+                        },
+                        {
                             userid:{
                                 contains: extractedQuery || ""
                             }

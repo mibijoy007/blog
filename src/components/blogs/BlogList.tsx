@@ -7,7 +7,8 @@ import { useEffect } from "react";
 
 
 export default function Bloglist({list}: {list: BlogType[]}){
-
+    
+    
     const router = useRouter();
 
     useEffect(() => {

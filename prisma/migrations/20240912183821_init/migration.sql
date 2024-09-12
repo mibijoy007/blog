@@ -8,6 +8,7 @@ CREATE TABLE "Post" (
     "userid" TEXT NOT NULL,
     "userimage" TEXT NOT NULL,
     "comments" TEXT[],
+    "date" TEXT NOT NULL DEFAULT 'January 1 2022',
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );

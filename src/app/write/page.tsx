@@ -16,11 +16,13 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 
+
 const initialBlogFormData = {
     title: '',
     category : '',
     description: '',
-    image: ''
+    image: '',
+    date: ''
 }
 
 export function CreateUniqueFileName(fileName: string){
@@ -146,17 +148,36 @@ async function handleCreateBlogPost(){
   
     //   console.log(data, "data123");
 
+
+    // adding the date
+    const options : any = { year: 'numeric', month: 'long', day: 'numeric' };
+    const today : Date = new Date();
+    const formattedDate: string = today.toLocaleDateString("en-US", options);
+    console.log("formatted",formattedDate,typeof(formattedDate));
+
+    // setBlogFormData({
+    //     ...blogFormData,
+    //     date : formattedDate
+    // })
+
+
+    const dataToAddPost:any = {
+        ...blogFormData,
+        userid: session?.user?.name,
+        userimage: session?.user?.image,
+        comments: [],
+        date : formattedDate
+    }
+
+    console.log("dataToAddPost",dataToAddPost);
+    
+
     const  res = await fetch('/api/post/add-post',{
         method: "POST",
         headers: {
             'Content-Type': 'application/json', 
         },
-        body: JSON.stringify({
-            ...blogFormData,
-            userid: session?.user?.name,
-            userimage: session?.user?.image,
-            comments: []
-        }),
+        body: JSON.stringify(dataToAddPost),
     })
     
     const data = await res.json();

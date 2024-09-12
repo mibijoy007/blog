@@ -63,14 +63,19 @@ export default function SingleBlogDetails({ SingleBlogData }: { SingleBlogData: 
                                                     <Image src={SingleBlogData?.userimage} alt="User-Image" fill />
                                                 </div>
                                             </div>
-                                            <div className="w-full">
-                                                <h4 className="mb-1 text-base font-medium text-body-color">
-                                                    By
-                                                    <span className="pl-2">
-                                                        {SingleBlogData?.userid.split('_')[0]}
-                                                    </span>
-                                                </h4>
-                                            </div>
+
+
+                                            {/* here */}
+
+                                            <div className="flex flex-col">
+                                <div className="mb-1 text-sm font-medium text-dark dark:text-white">
+                                 {SingleBlogData?.userid.split('_')[0].toUpperCase()}
+
+                                </div>
+                                <div className=" text-xs text-dark dark:text-white/50">
+                                ·{' '}{' '}{SingleBlogData?.date}
+                                </div>
+                            </div>
                                         </div>
                                     </div>
                                     <div className="mb-4">
@@ -93,9 +98,10 @@ export default function SingleBlogDetails({ SingleBlogData }: { SingleBlogData: 
                                             />
                                         </div>
                                     </div>
-                                    <p className="mb-8 leading-relaxed text-base font-medium text-body-color sm:text-lg lg:text-base xl:text-lg">
+                                    <div className="mb-8 max-w-md white-space-nowrap leading-relaxed text-base font-medium text-body-color sm:text-lg lg:text-base xl:text-lg">
+
                                         {SingleBlogData?.description}
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -171,3 +177,13 @@ export default function SingleBlogDetails({ SingleBlogData }: { SingleBlogData: 
         </div>
     )
 }
+
+
+// <div className="w-full">
+//                                                 <h4 className="mb-1 text-base font-medium text-body-color">
+//                                                     By
+//                                                     <span className="pl-2">
+//                                                         {SingleBlogData?.userid.split('_')[0]}
+//                                                     </span>
+//                                                 </h4>
+//                                             </div>

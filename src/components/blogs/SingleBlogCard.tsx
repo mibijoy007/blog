@@ -19,6 +19,7 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
             category,
             userid,
             userimage,
+            date,
             comments } = singleBlogItem;
     
     const titleForURL = title.toLocaleLowerCase().replace(/\s+/g, '-');
@@ -43,10 +44,10 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
     return (
         <div>
            
-            <div className="relative overflow-hidden rounded-md bg-[#f9faff] shadow-one dark:bg-dark">
+            <div className="relative overflow-hidden rounded-md bg-[#e7eaf9]/60 shadow-one dark:bg-dark">
 
                 <Link 
-                    className="relative block h-60 w-full" 
+                    className="relative block h-80 w-full" 
                     href={`/blogs/${id}`}>
                         
                         <Link href={'/category'}>
@@ -69,16 +70,16 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                      : <div className="p-5 text-body-color font-serif">*No Image</div> }
                 </Link>
                 <div>
-                <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <div className=" p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
                         <Link
-                            className="mb-4 text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black dark:text-white sm:text-2xl"
+                            className=" text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black dark:text-white sm:text-2xl"
                             // href={`/blogs/${titleForURL}`}
                             href={`/blogs/${id}`}
                             >
-                            <h2 className=" hover:text-primary/90  dark:hover:text-primarys">
+                            <h2 className="h-8 hover:text-primary/90  dark:hover:text-primarys">
                             {title}
                     </h2>
-                    <p className="h-5 text-ellipsis overflow-hidden whitespace-nowrap mb-6 pb-6 text-base text-body-color dark:border-white dark:border-opacity-10">
+                    <p className="h-10 text-ellipsis font-serif font-light overflow-hidden whitespace-nowrap mb-4 pb-6 text-sm  text-body-color dark:border-white dark:border-opacity-10">
                         {description}
                     </p>
                         </Link>
@@ -91,10 +92,13 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                                 </div>
                             </div>
                             <div className="flex flex-col">
-                                <p className="mb-1 text-sm font-medium text-dark dark:text-white">
+                                <div className="mb-1 text-sm font-semibold text-dark dark:text-white">
                                  {userid.split('_')[0].toUpperCase()}
 
-                                </p>
+                                </div>
+                                <div className=" text-xs text-dark dark:text-white/50">
+                                ·{' '}{' '}{date}
+                                </div>
                             </div>
                         </div>
                         <div className='cursor-pointer hover:border-b-2 hover:dark:border-white hover:border-black'>
