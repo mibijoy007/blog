@@ -8,11 +8,11 @@ export const NavItems : NavItemsType[] = [
         label: "Search",
         path: "/search",
       },
-      // {
-      //   id: "blogs",
-      //   label: "Blogs",
-      //   path: "/blogs",
-      // },
+      {
+        id: "blogs",
+        label: "Blogs",
+        path: "/blogs",
+      },
       {
         id: "contacts",
         label: "Contacts",

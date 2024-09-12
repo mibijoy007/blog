@@ -6,7 +6,7 @@ import { BlogType } from "@/utils/Types";
 import { fetchConfig } from "firebase/remote-config";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -34,12 +34,13 @@ export default function Search() {
                 setSearchResults(searchedData.data)
             }
             // else alert('Nothing found')
+            // toast.success("hhhh")
             else toast('Nothing found',
                 {
                   icon: '🤷‍♂️',
                   style: {
                     borderRadius: '10px',
-                    background: '#333',
+                    background: '#1c98ed',
                     color: '#fff',
                   },
                 }
@@ -53,7 +54,7 @@ export default function Search() {
                   icon: '❌',
                   style: {
                     borderRadius: '10px',
-                    background: '#333',
+                    background: '#1c98ed',
                     color: '#fff',
                   },
                 }
@@ -99,6 +100,10 @@ export default function Search() {
 
     return (
         <section className="overflow-hidden py-16 ">
+            <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
             <div className="container">
                 <div className="-mx-4 flex flex-wrap">
                     <div className="w-full px-4">

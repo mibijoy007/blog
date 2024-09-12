@@ -13,6 +13,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 import React, { useState } from "react"
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const initialBlogFormData = {
@@ -160,7 +161,18 @@ async function handleCreateBlogPost(){
     
     const data = await res.json();
     console.log(data, "data");
-    alert(data.message);
+    // alert(data.message);
+    toast(data.message,
+        {
+          icon: '📝',
+          style: {
+            borderRadius: '10px',
+            background: '#1c98ed',
+            color: '#fff',
+          },
+        }
+      );
+    
     
     if (data && data.success){
         router.push('/blogs')
@@ -172,6 +184,12 @@ async function handleCreateBlogPost(){
 
  return(
         <section className="overflow-hidden py-16 md:py-20 lg:py-20">
+
+            <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
+
             <div className="container">
                 <div className="-mx-4 flex flex-wrap">
                     <div className="w-full px-4">

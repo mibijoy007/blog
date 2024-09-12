@@ -42,14 +42,18 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
         }
     return (
         <div>
+           
             <div className="relative overflow-hidden rounded-md bg-[#f9faff] shadow-one dark:bg-dark">
 
                 <Link 
                     className="relative block h-60 w-full" 
-                    href={'/'}>
-                    <span className="absolute top-3 right-3 z-20 inline-flex items-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
+                    href={`/blogs/${id}`}>
+                        
+                        <Link href={'/category'}>
+                    <span className="absolute top-3 right-3 z-20 inline-flex items-center rounded-full bg-primary hover:bg-primary/80 py-2 px-4 text-sm font-semibold capitalize text-white">
                         {category}
                     </span>
+                    </Link>
                     {/* <Image src={image} alt="Blog Image" fill/> */}
                     { image ? <Image 
                                     src={image} 
@@ -66,18 +70,19 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                 </Link>
                 <div>
                 <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
-                    <h2>
                         <Link
-                            className="mb-4 text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
+                            className="mb-4 text-ellipsis overflow-hidden whitespace-nowrap block text-xl font-bold text-black dark:text-white sm:text-2xl"
                             // href={`/blogs/${titleForURL}`}
                             href={`/blogs/${id}`}
-                        >
+                            >
+                            <h2 className=" hover:text-primary/90  dark:hover:text-primarys">
                             {title}
-                        </Link>
                     </h2>
                     <p className="h-5 text-ellipsis overflow-hidden whitespace-nowrap mb-6 pb-6 text-base text-body-color dark:border-white dark:border-opacity-10">
                         {description}
                     </p>
+                        </Link>
+
                     <div className="flex items-center justify-between">
                         <div className="flex items-center xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-3">
                             <div className="mr-4">
@@ -87,19 +92,19 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                             </div>
                             <div className="flex flex-col">
                                 <p className="mb-1 text-sm font-medium text-dark dark:text-white">
-                                    By <br /> {userid.split('_')[0].toUpperCase()}
+                                 {userid.split('_')[0].toUpperCase()}
 
                                 </p>
                             </div>
                         </div>
-                        <div>
+                        <div className='cursor-pointer hover:border-b-2 hover:dark:border-white hover:border-black'>
                                 
                                 {/* we have to check if the user is the owner or not then he can "delete" this by using session*/}
                                 {
                                     session?.user?.name === userid ? 
                                         <FaTrash 
-                                        className='cursor-pointer' 
-                                        size={20} 
+                                         className="p-1"
+                                        size={30} 
                                         onClick={() => {handleDelete(id)}}
                                         /> 
                                     
@@ -112,6 +117,7 @@ export default function SingleBlogCard({ singleBlogItem }: { singleBlogItem: Blo
                 </div>
                 
             </div>
+           
         </div>
 
     )
